@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import logo from './todo-app-logo.svg';
+import { Header } from "components/ui/header"
+import { MainContainer, ContentWrapper } from "components/ui/wrapper"
 
 type Task = {
   id: number, text: string, done: boolean
@@ -16,32 +17,6 @@ function filterTasks(tasks: Task[], scope: TaskScope): Task[] {
     case "all":
       return tasks;
   }
-}
-
-function Header({ username }: { username: string }): React.JSX.Element {
-  return (
-    <div className="flex justify-between h-14 items-center px-4">
-      <img src={logo} className="size-24 h-6" alt="logo" />
-      <p>{username}</p>
-    </div>
-  );
-}
-
-function MainContainer({ children }: { children: React.ReactNode }): React.JSX.Element {
-  return (
-    <div className='flex flex-col gap-14 max-w-xl mx-auto pt-16'>
-      {children}
-    </div>
-  );
-}
-
-function ContentWrapper({ title, children }: { title: string, children: React.ReactNode }): React.JSX.Element {
-  return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-3xl">{title}</h1>
-      {children}
-    </div>
-  );
 }
 
 function TaskForm({ onSubmit }: { onSubmit: (text: string) => void }): React.JSX.Element {
@@ -163,4 +138,3 @@ export function TasksPage(): React.JSX.Element {
     </>
   );
 }
-
