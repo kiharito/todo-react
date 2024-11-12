@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { TasksPage } from 'components/pages/tasks';
-import { LoginPage } from 'components/pages/login';
+import { PageBase } from 'components/pages/base';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <LoginPage />
+    <PageBase />
   </React.StrictMode>
 );

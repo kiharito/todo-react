@@ -123,10 +123,11 @@ function TasksPageContent(): React.JSX.Element {
   );
 }
 
-export function TasksPage(): React.JSX.Element {
+type TasksPageProps = { loginUserName: string };
+export function TasksPage(props: TasksPageProps): React.JSX.Element {
   return (
     <>
-      <Header username="Alice" />
+      <Header username={props.loginUserName} />
       <MainContainer>
         <TasksPageContent />
       </MainContainer>

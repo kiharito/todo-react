@@ -3,15 +3,21 @@ import logo from 'assets/images/todo-app-logo.svg';
 import { Button } from 'components/ui/button';
 import { Header } from "components/ui/header"
 import { TextField } from "components/ui/text_field";
+import { Page } from "components/pages/base";
 
 
-function LoginPageContent(): React.JSX.Element {
+type LoginPageContentProps = {
+  setPage: (page: Page) => void,
+  setLoginUserName: (userName: string) => void
+};
+function LoginPageContent(props: LoginPageContentProps): React.JSX.Element {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   function handleSubmit(event: FormEvent): void {
     event.preventDefault();
-    console.log("Submit: ", userName, password);
+    props.setPage("tasks");
+    props.setLoginUserName(userName);
   }
 
   return (
@@ -46,12 +52,16 @@ function LoginPageContent(): React.JSX.Element {
   );
 }
 
-export function LoginPage(): React.JSX.Element {
+type LoginPageProps = {
+  loginUserName: string, setPage: (page: Page) => void,
+  setLoginUserName: (userName: string) => void
+};
+export function LoginPage(props: LoginPageProps): React.JSX.Element {
   return (
     <>
       <div className="h-screen flex flex-col" >
-        <Header username="" />
-        <LoginPageContent />
+        <Header username={props.loginUserName} />
+        <LoginPageContent setPage={props.setPage} setLoginUserName={props.setLoginUserName} />
       </div>
     </>
   );
