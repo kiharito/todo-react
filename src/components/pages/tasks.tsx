@@ -1,5 +1,7 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
+import { Button } from 'components/ui/button';
 import { Header } from "components/ui/header"
+import { TextField } from "components/ui/text_field"
 import { MainContainer, ContentWrapper } from "components/ui/wrapper"
 
 type Task = {
@@ -30,15 +32,8 @@ function TaskForm({ onSubmit }: { onSubmit: (text: string) => void }): React.JSX
 
   return (
     <form className='flex gap-4' onSubmit={(e: FormEvent): void => handleSubmit(e)}>
-      <input
-        className='box-border border border-solid rounded h-12 w-full p-3'
-        value={text}
-        onChange={(e: ChangeEvent<HTMLInputElement>): void => setText(e.target.value)}
-        placeholder='Enter your task' />
-      <button
-        className="w-16 box-border border border-solid rounded font-bold shrink-0"
-        type='submit'
-      >Save</button>
+      <TextField text={text} onChange={setText} placeholder='Enter your task' />
+      <Button text='Save' />
     </form>
   );
 }
