@@ -1,6 +1,5 @@
 import { FormEvent, useState } from 'react';
 import { Button } from 'components/ui/button';
-import { Header } from "components/ui/header"
 import { TextField } from "components/ui/text_field"
 import { MainContainer, ContentWrapper } from "components/ui/wrapper"
 
@@ -123,11 +122,9 @@ function TasksPageContent(): React.JSX.Element {
   );
 }
 
-type TasksPageProps = { loginUserName: string };
-export function TasksPage(props: TasksPageProps): React.JSX.Element {
+export function TasksPage(): React.JSX.Element {
   return (
     <>
-      <Header username={props.loginUserName} />
       <MainContainer>
         <TasksPageContent />
       </MainContainer>
