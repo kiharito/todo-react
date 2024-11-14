@@ -1,3 +1,4 @@
+import { Header } from 'components/ui/header';
 import { useState } from 'react';
 import { LoginPage } from './login';
 import { TasksPage } from './tasks';
@@ -8,8 +9,11 @@ export function PageBase(): React.JSX.Element {
   const [loginUserName, setLoginUserName] = useState("");
 
   return (
-    page === "login" ?
-      <LoginPage loginUserName={loginUserName} setPage={setPage} setLoginUserName={setLoginUserName} /> :
-      <TasksPage loginUserName={loginUserName} />
+    <div className='grid grid-rows-[auto__1fr] w-full min-w-[840px] min-h-screen'>
+      <Header username={loginUserName} />
+      {page === "login" ?
+        <LoginPage setPage={setPage} setLoginUserName={setLoginUserName} /> :
+        <TasksPage />}
+    </div>
   );
 }
