@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import checkCircle from 'assets/images/check_circle.svg';
+import { ReactComponent as CheckCircle } from 'assets/images/check_circle.svg';
 import { Button } from 'components/ui/button';
 import { TextField } from "components/ui/text_field"
 import { MainContainer, ContentWrapper } from "components/ui/wrapper"
@@ -67,7 +67,7 @@ function TaskRow({ task, onUpdate }: { task: Task, onUpdate: (task_id: number) =
     <li className='flex items-center h-12'>
       <p className={`w-full border-b leading-10${task.done ? " line-through" : ""}`}>{task.text}</p>
       <button className='w-10 flex items-center justify-center' onClick={(): void => onUpdate(task.id)}>
-        <img src={checkCircle} className="w-6" />
+        <CheckCircle className="w-6 fill-[#0797B9] hover:fill-[#0D3C48]" />
       </button>
     </li>
   );
