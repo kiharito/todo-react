@@ -22,17 +22,23 @@ function filterTasks(tasks: Task[], scope: TaskScope): Task[] {
 }
 
 function TaskForm({ onSubmit }: { onSubmit: (text: string) => void }): React.JSX.Element {
-  const [text, setText] = useState("");
+  const [taskText, setTaskText] = useState("");
 
   function handleSubmit(event: FormEvent): void {
     event.preventDefault();
-    onSubmit(text);
-    setText("");
+
+    if (taskText.trim() === "") {
+      alert('Please enter your task.');
+      setTaskText("");
+      return;
+    }
+    onSubmit(taskText.trim());
+    setTaskText("");
   }
 
   return (
     <form className='flex gap-4' onSubmit={(e: FormEvent): void => handleSubmit(e)}>
-      <TextField text={text} onChange={setText} placeholder='Enter your task' />
+      <TextField text={taskText} onChange={setTaskText} placeholder='Enter your task' />
       <Button text='Save' />
     </form>
   );
