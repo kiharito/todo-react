@@ -3,6 +3,8 @@ import { ReactComponent as CheckCircle } from 'assets/images/check_circle.svg';
 import { Button } from 'components/ui/button';
 import { TextField } from "components/ui/text_field"
 import { MainContainer, ContentWrapper } from "components/ui/wrapper"
+import { Player } from "@lottiefiles/react-lottie-player";
+import NoTaskAnimation from "assets/animations/done-congrats.json";
 
 type Task = {
   id: number, text: string, done: boolean
@@ -79,20 +81,31 @@ function TaskRow({ task, onUpdate }: { task: Task, onUpdate: (task_id: number) =
   );
 }
 
+function NoToDo(): React.JSX.Element {
+  return (
+    <div>
+      <Player src={NoTaskAnimation} autoplay loop />
+    </div>
+  );
+}
+
 function TaskList({ tasks, onUpdate }: { tasks: Task[], onUpdate: (task_id: number) => void }): React.JSX.Element {
   const [selectedScope, setSelectedScope] = useState<TaskScope>("todo");
+
+  const filteredTasks = filterTasks(tasks, selectedScope);
 
   return (
     <div>
       <TaskFilterTab selectedScope={selectedScope} onClick={setSelectedScope} />
-      <ul className='flex flex-col gap-5'>
-        {
-          filterTasks(tasks, selectedScope).map(
-            (task: Task): React.JSX.Element =>
-              <TaskRow task={task} key={task.id} onUpdate={onUpdate} />
-          )
-        }
-      </ul>
+      {selectedScope == "todo" && filteredTasks.length === 0 ? <NoToDo /> :
+        <ul className='flex flex-col gap-5'>
+          {
+            filteredTasks.map(
+              (task: Task): React.JSX.Element =>
+                <TaskRow task={task} key={task.id} onUpdate={onUpdate} />
+            )
+          }
+        </ul>}
     </div>
   );
 }
