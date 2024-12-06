@@ -97,7 +97,7 @@ function TaskList({ tasks, onUpdate }: { tasks: Task[], onUpdate: (task_id: numb
   return (
     <div>
       <TaskFilterTab selectedScope={selectedScope} onClick={setSelectedScope} />
-      {selectedScope == "todo" && filteredTasks.length === 0 ? <NoToDo /> :
+      {selectedScope === "todo" && filteredTasks.length === 0 ? <NoToDo /> :
         <ul className='flex flex-col gap-5'>
           {
             filteredTasks.map(

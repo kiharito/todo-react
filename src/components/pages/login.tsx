@@ -3,6 +3,7 @@ import logo from 'assets/images/todo-app-logo.svg';
 import { Button } from 'components/ui/button';
 import { TextField } from "components/ui/text_field";
 import { Page } from "components/pages/base";
+import { Heading, Text } from '@radix-ui/themes';
 
 
 type LoginPageContentProps = {
@@ -24,12 +25,12 @@ function LoginPageContent(props: LoginPageContentProps): React.JSX.Element {
       <div className="flex-1 flex items-center">
         <div className='flex flex-col gap-4 w-96 mx-auto'>
           <img src={logo} className="mx-auto" alt="logo" />
-          <p className="text-center">Don’t mamage tasks. Do it right now.</p>
+          <Text as="p" align="center">Don’t mamage tasks. Do it right now.</Text>
         </div>
       </div>
       <div className="flex-1 flex items-center">
         <div className='flex flex-col gap-6 w-96 mx-auto'>
-          <h1 className="text-5xl">Sign In</h1>
+          <Heading size="8">Sign In</Heading>
           <form className="flex flex-col gap-6" onSubmit={(e: FormEvent) => handleSubmit(e)}>
             <dl className="flex flex-col gap-3">
               <dt>User Name</dt>
