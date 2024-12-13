@@ -10,6 +10,11 @@ export function Login() {
 
   function handleSubmit(event: FormEvent): void {
     event.preventDefault();
+
+    if (userName.trim() === "" || password.trim() !== "1111") {
+      alert('User name or password is incorrect');
+      return;
+    }
     setLoginUserName(userName);
   }
 
